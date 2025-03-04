@@ -1,23 +1,14 @@
 package com.example.ut3_proyectofinal_pablosimon.Screens
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -32,7 +23,7 @@ fun IMCScreen(navController: NavController) {
     var sexo by remember { mutableStateOf("") }
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(50.dp),
+        modifier = Modifier.fillMaxSize().padding(50.dp).verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -63,14 +54,14 @@ fun IMCScreen(navController: NavController) {
             )
             Text("Hombre", color = MaterialTheme.colorScheme.onBackground)
         }
-            Spacer(Modifier.width(20.dp))
+        Spacer(Modifier.width(20.dp))
         Row {
             Checkbox(
                 checked = sexo == "Mujer",
                 onCheckedChange = { if (it) sexo = "Mujer" }
             )
             Text("Mujer", color = MaterialTheme.colorScheme.onBackground)
-    }
+        }
         Spacer(Modifier.height(20.dp))
 
         Button(onClick = {
